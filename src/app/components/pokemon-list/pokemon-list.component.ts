@@ -107,10 +107,10 @@ export class PokemonListComponent implements OnInit {
             type.type.name === value) !== -1) !== -1);
       //Filter by pokemon's name
       localList = localList.filter((pokemon: Pokemon) =>
-        pokemon.name.toLocaleLowerCase().indexOf(this.filterName) !== -1);
+        pokemon.name.toLocaleLowerCase().indexOf(this.filterName.toLocaleLowerCase()) !== -1);
     } else if (this.filterName) {
       localList = this.pokemonListDB.filter((pokemon: Pokemon) =>
-        pokemon.name.toLocaleLowerCase().indexOf(this.filterName) !== -1);
+        pokemon.name.toLocaleLowerCase().indexOf(this.filterName.toLocaleLowerCase()) !== -1);
     } else if (this.typeFilter && this.typeFilter.length > 0) {
       localList = this.pokemonListDB.filter((pokemon: Pokemon) =>
         pokemon.types.findIndex(type =>

@@ -4,7 +4,6 @@
   </div>
   <div class='card-body'>
     <div class='row'>
-      <!-- <div class='col-md-2'>Filter by:</div> -->
       <div class='col-md-4'>
           <select [(ngModel)]="selected" (ngModelChange)="toggleFilterType()" class="custom-select">
               <option *ngFor='let pokeType of pokeTypes'
@@ -26,12 +25,6 @@
             {{typef}}<span aria-hidden="true">&times;</span>
           </button>
         </div>
-      </div>
-    </div>
-    <div class='row'
-         *ngIf='filterName'>
-      <div class='col-md-6'>
-        <h4>Filtered by: {{filterName}}</h4>
       </div>
     </div>
     <div class='table-responsive'>
