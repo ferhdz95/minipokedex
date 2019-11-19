@@ -1,0 +1,49 @@
+  
+thead {
+    color: #337AB7;
+}
+
+th.pointer {
+    cursor: pointer;
+}
+input[type='text'].search {
+    border-radius: 15px;
+    border: none;
+    width: 70%;
+    padding: 8px 40px 8px 40px;
+    background-color: #ddd;
+    background-image: url(../../../assets/icons/search-solid.svg);
+    background-position: 0.5px 0.5px;
+    background-repeat: no-repeat;
+}
+.filterButton button {
+    border-radius: 15px;
+    margin: 2px;
+    border: none;
+    padding: 8px 10px 8px 10px;
+    font-size: large;
+    background-color: #ddd;
+    span {
+        vertical-align: top;
+        margin: 2px;
+        font-size: small;
+    }
+}
+td {
+    vertical-align: middle;
+}
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { 
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder { 
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }

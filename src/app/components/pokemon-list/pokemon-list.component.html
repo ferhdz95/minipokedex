@@ -1,0 +1,79 @@
+<div class='card'>
+  <div class='card-header'>
+    <img src="https://img.icons8.com/color/48/000000/pokeball-2.png">{{pageTitle}} 
+  </div>
+  <div class='card-body'>
+    <div class='row'>
+      <!-- <div class='col-md-2'>Filter by:</div> -->
+      <div class='col-md-4'>
+          <select [(ngModel)]="selected" (ngModelChange)="toggleFilterType()" class="custom-select">
+              <option *ngFor='let pokeType of pokeTypes'
+                [value]="pokeType">{{pokeType | titlecase}}
+              </option>
+            </select>
+        
+      </div>
+      <div class='col-md-4'>
+
+      </div>
+      <div class='col-md-4'>
+          <input class="search" placeholder="Search pokemon..." type='text'
+               [(ngModel)]='filterName' />
+      </div>
+      <div class='col-md-4'>
+        <div (click)='deleteFilterType($event.target.value)' *ngFor='let typef of typeFilter' class="filterButton">
+          <button type="button" class="close" aria-label="Close" [id]="typef" [value]="typef">
+            {{typef}}<span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class='row'
+         *ngIf='filterName'>
+      <div class='col-md-6'>
+        <h4>Filtered by: {{filterName}}</h4>
+      </div>
+    </div>
+    <div class='table-responsive'>
+      <table class='table'
+             *ngIf='pokemonService.cache && pokemonService.cache.length'>
+        <thead>
+          <tr>
+            <th>
+              <button class='btn btn-primary'
+                      (click)='toggleImage()'>
+                Show {{showShiny ? 'Default' : 'Shiny'}} Image
+              </button>
+            </th>
+            <th class='pointer' (click)='toggleOrder()'>Name <i 
+              [class]="alphaDown ? 'fas fa-sort-alpha-down' : 'fas fa-sort-alpha-up'">
+              </i>
+            </th>
+            <th>Pokemon Id</th>
+            <th>Weight</th>
+            <th>Height</th>
+            <th>Type(s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let pokemon of pokemonList'>
+            <td>
+              <img
+                   [src]="showShiny ? pokemon.sprites.front_shiny ? pokemon.sprites.front_shiny : notFoundImageUrl : pokemon.sprites.front_default ? pokemon.sprites.front_default : notFoundImageUrl"
+                   [title]='pokemon.name'
+                   width="100px"
+                   height="100px">
+            </td>
+            <td>{{pokemon.name | titlecase}}</td>
+            <td>{{pokemon.id}}</td>
+            <td>{{pokemon.weight}}</td>
+            <td>{{pokemon.height}}</td>
+            <td><div *ngFor='let type of pokemon.types'>
+              <span>{{type.type.name | titlecase}}</span>
+            </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
